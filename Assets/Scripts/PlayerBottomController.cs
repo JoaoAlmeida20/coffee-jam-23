@@ -84,7 +84,7 @@ public class PlayerBottomController : MonoBehaviour
             jumpReleased = true;
         }
 
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire2")) {
             fixedJoint2D.enabled = !fixedJoint2D.enabled;
         }
 
