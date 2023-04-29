@@ -19,6 +19,13 @@ public class PlayerBottomController : MonoBehaviour
     [Range(0, 1)] public float jumpShorthopMultiplier;
     [Range(0, 0.5f)] public float jumpCoyoteTime;
     [Range(0, 0.5f)] public float jumpBufferTime;
+
+    [Header("Pulling")]
+    public float pullStrength;
+    public float pullDistance = 5f;
+    bool isPulling;
+    string movableTag = "Movable";
+    GameObject[] movableObjects;
     
     [Header("Physics")]
     public float friction;
@@ -58,6 +65,7 @@ public class PlayerBottomController : MonoBehaviour
         isJumping = false;
         lastJumpedTime = jumpBufferTime + 1.0f;
         lastGroundedTime = jumpCoyoteTime + 1.0f;
+        movableObjects = GameObject.FindGameObjectsWithTag(movableTag);
     }
 
     // Update is called once per frame
@@ -82,6 +90,13 @@ public class PlayerBottomController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R)) {
             transform.position = new Vector3(0, 5, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.G)) {
+            isPulling = true;
+        }
+        if (Input.GetKeyUp(KeyCode.G)) {
+            isPulling = false;
         }
     }
 
@@ -146,6 +161,21 @@ public class PlayerBottomController : MonoBehaviour
         // Max fall speed
         if (rigidbody2d.velocity.y < -maxFallSpeed) {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, -maxFallSpeed);
+        }
+
+        //Pull
+        if (isPulling)
+        {
+            foreach (GameObject obj in movableObjects)
+            {
+                float distanceToPlayer = Vector3.Distance(obj.transform.position, transform.position);
+                if (distanceToPlayer <= pullDistance)
+                {
+                    Vector3 directionToPlayer = (transform.position - obj.transform.position).normalized;
+                    float pullForce = (pullDistance - distanceToPlayer) / pullDistance * pullStrength;
+                    obj.GetComponent<Rigidbody2D>().AddForce(directionToPlayer * pullForce);
+                }
+            }
         }
     }
 }
