@@ -31,7 +31,7 @@ public class PlayerTopController : MonoBehaviour
         }
         if (fire && cooldownTimer <= 0.0f) {
             var projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-            Vector2 direction = UnityEngine.Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, -Camera.main.transform.position.z)) - transform.position;
             projectile.GetComponent<Rigidbody2D>().AddForce(direction.normalized * projectileSpeed);
             fire = false;
             cooldownTimer = cooldownTime;
