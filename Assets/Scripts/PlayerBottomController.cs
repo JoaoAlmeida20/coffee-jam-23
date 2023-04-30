@@ -61,7 +61,7 @@ public class PlayerBottomController : MonoBehaviour
         defaultRotation = transform.rotation;
         playerSize = capsuleCollider2d.size;
         gravityScale = rigidbody2d.gravityScale;
-        groundCheckSize = new Vector2(playerSize.x * transform.localScale.x - 0.3f, 0.05f);
+        groundCheckSize = new Vector2(playerSize.x * transform.localScale.x - 0.3f, .5f); //mudei o Y por causa da scale
         isJumping = false;
         lastJumpedTime = jumpBufferTime + 1.0f;
         lastGroundedTime = jumpCoyoteTime + 1.0f;
@@ -104,7 +104,9 @@ public class PlayerBottomController : MonoBehaviour
         // Grounded Check
         lastGroundedTime += Time.fixedDeltaTime;
         Vector2 groundCheckCenter = (Vector2) transform.position + (Vector2.down * (transform.localScale.y + playerSize.y) / 4.0f);
+        print(groundCheckCenter);
         if (Physics2D.OverlapBox(groundCheckCenter, groundCheckSize, 0.0f, LayerMask.GetMask("Default")) != null) {
+            print("ground");
             lastGroundedTime = 0.0f;
         }
 
@@ -127,10 +129,9 @@ public class PlayerBottomController : MonoBehaviour
         }
 
         // Jump
-        if (isJumping && rigidbody2d.velocity.y < 0.0f) {
+        if (isJumping && rigidbody2d.velocity.y <= 0.0f) {
             isJumping = false;
         }
-
         if (!isJumping && lastJumpedTime <= jumpBufferTime) {
             if (lastGroundedTime <= jumpCoyoteTime) {
                 rigidbody2d.AddForce(Vector2.up * jumpStrength * (0.9f + Mathf.Min(0.1f, Mathf.Abs(rigidbody2d.velocity.x) / (runMaxSpeed * 10))), ForceMode2D.Impulse);
