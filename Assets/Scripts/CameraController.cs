@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public GameObject followTarget;
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,6 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, transform.position.z);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, transform.position.z), speed);
     }
 }

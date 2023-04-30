@@ -35,7 +35,7 @@ public class PlayerBottomController : MonoBehaviour
 
     Rigidbody2D rigidbody2d;
     SpriteRenderer spriteRenderer;
-    CapsuleCollider2D capsuleCollider2d;
+    CapsuleCollider2D capsuleCollider2D;
     FixedJoint2D fixedJoint2D;
 
     Quaternion defaultRotation;
@@ -56,10 +56,10 @@ public class PlayerBottomController : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        capsuleCollider2d = GetComponent<CapsuleCollider2D>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         fixedJoint2D = GetComponent<FixedJoint2D>();
         defaultRotation = transform.rotation;
-        playerSize = capsuleCollider2d.size;
+        playerSize = capsuleCollider2D.size;
         gravityScale = rigidbody2d.gravityScale;
         groundCheckSize = new Vector2(playerSize.x * transform.localScale.x - 0.3f, .5f); //mudei o Y por causa da scale
         isJumping = false;
@@ -100,10 +100,15 @@ public class PlayerBottomController : MonoBehaviour
         }
     }
 
+    void OnDrawGizmos() {
+        Vector2 groundCheckCenter = (Vector2) transform.position + (Vector2.down * (transform.localScale.y + playerSize.y) / 3.0f);
+        Gizmos.DrawCube(groundCheckCenter, groundCheckSize);
+    }
+
     void FixedUpdate() {
         // Grounded Check
         lastGroundedTime += Time.fixedDeltaTime;
-        Vector2 groundCheckCenter = (Vector2) transform.position + (Vector2.down * (transform.localScale.y + playerSize.y) / 4.0f);
+        Vector2 groundCheckCenter = (Vector2) transform.position + (Vector2.down * (transform.localScale.y + playerSize.y) / 3.0f);
         print(groundCheckCenter);
         if (Physics2D.OverlapBox(groundCheckCenter, groundCheckSize, 0.0f, LayerMask.GetMask("Default")) != null) {
             print("ground");
