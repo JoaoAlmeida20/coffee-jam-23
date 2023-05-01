@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 504179218}
   - component: {fileID: 504179217}
   - component: {fileID: 504179220}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mirror
   m_TagString: Movable
   m_Icon: {fileID: 0}
