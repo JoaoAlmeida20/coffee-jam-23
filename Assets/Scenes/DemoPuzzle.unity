@@ -707,8 +707,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426933782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.9411, y: -8.2937, z: -0.024873925}
-  m_LocalScale: {x: 1.6554854, y: -3.0933022, z: 2.0871603}
+  m_LocalPosition: {x: -18.9411, y: -9.1176, z: -0.024873925}
+  m_LocalScale: {x: 1.6554854, y: -1.4455001, z: 2.0871603}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 760368956}
@@ -1089,7 +1089,7 @@ GameObject:
   - component: {fileID: 792154475}
   - component: {fileID: 792154474}
   - component: {fileID: 792154477}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mirror
   m_TagString: Movable
   m_Icon: {fileID: 0}
@@ -1104,7 +1104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792154472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.56, y: -0.69, z: 0.0588227}
+  m_LocalPosition: {x: -20.31, y: -0.27, z: 0.0588227}
   m_LocalScale: {x: 0.5199, y: 2.8004365, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

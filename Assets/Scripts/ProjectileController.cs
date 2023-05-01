@@ -24,8 +24,7 @@ public class ProjectileController : MonoBehaviour
             GameObject.Destroy(this.gameObject);
         }
     }
-
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnCollisionEnter2D(Collision2D other){
         int layer = other.gameObject.layer;
         if (layer == LayerMask.NameToLayer("Player"))
             return;
@@ -33,6 +32,13 @@ public class ProjectileController : MonoBehaviour
             var otherChild = other.transform.GetChild(0).gameObject;
             otherChild.SetActive(!otherChild.activeSelf);
         }
+        if (layer == LayerMask.NameToLayer("Mirror")){
+            //GetComponent<Rigidbody2D>().velocity = Vector3.Reflect(GetComponent<Rigidbody2D>().velocity, other.contacts[0].normal);
+            return;
+        }
         GameObject.Destroy(this.gameObject);
+    }
+    void OnTriggerEnter2D(Collider2D other) {
+        
     }
 }

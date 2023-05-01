@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6958093093282441148}
   - component: {fileID: 459254037048849718}
   - component: {fileID: 3724173755826461261}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.5696539, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.79607844, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -110,8 +110,8 @@ CircleCollider2D:
   m_GameObject: {fileID: 4464025326511429736}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 6200000, guid: 913d02da878805446beb1056d0fba8f6, type: 2}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 732312345819261111}
   - component: {fileID: 8325216874218131800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4599065290245219422}
-  m_LocalRotation: {x: -0, y: -0, z: -0.18485092, w: 0.98276657}
+  m_LocalRotation: {x: -0, y: -0, z: -0.22727509, w: 0.9738306}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -186,8 +186,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.215
-  m_Color: {r: 0.9960785, g: 0.7176471, b: 0.34901962, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.9960785, g: 0.8588236, b: 0.30588236, a: 1}
+  m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 0.21842605
+  m_PointLightOuterRadius: 0.23971948
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
