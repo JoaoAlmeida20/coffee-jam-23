@@ -117,10 +117,6 @@ public class PlayerBottomController : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos() {
-        Gizmos.DrawWireSphere(transform.position, topSearchRadius);
-    }
-
     void FixedUpdate() {
         // Grounded Check
         lastGroundedTime += Time.fixedDeltaTime;
