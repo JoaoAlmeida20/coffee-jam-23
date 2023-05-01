@@ -240,6 +240,7 @@ MonoBehaviour:
   fallGravityMultiplier: 2
   maxFallSpeed: 50
   rotationSpeed: 10
+  topSearchRadius: 2
   horizontal: 0
   vertical: 0
 --- !u!212 &5133026625994604884
@@ -563,6 +564,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4464025326511429736, guid: 92fe48c5c347eed4eb1c9a29d263dcd2, type: 3}
   projectileSpeed: 800
   cooldownTime: 0.25
+  tryRelinking: 0
   intensity: 2
   flashLight: {fileID: 5133026625673586426}
 --- !u!70 &578261987832957280
@@ -597,7 +599,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: e489a5e2ecd14084cbbcc40d49802ceb, type: 2}
+  m_Material: {fileID: 6200000, guid: 7e4d6bcb42ee2024fb44f04621e0895b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1

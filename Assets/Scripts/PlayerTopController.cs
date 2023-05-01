@@ -11,6 +11,12 @@ public class PlayerTopController : MonoBehaviour
 
     bool fire;
     float cooldownTimer;
+    [SerializeField] public bool tryRelinking;
+
+    Rigidbody2D rigidbody2d;
+    GameObject playerBottom;
+    FixedJoint2D fixedJoint2D;
+    Vector3 defaultPosition;
 
     [Header("FlashLight")]
     public float intensity;
@@ -21,6 +27,10 @@ public class PlayerTopController : MonoBehaviour
     void Start()
     {
         cooldownTimer = 0.0f;
+        rigidbody2d = GetComponent<Rigidbody2D>();
+        playerBottom = transform.parent.gameObject;
+        fixedJoint2D = playerBottom.GetComponent<FixedJoint2D>();
+        defaultPosition = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -60,6 +70,18 @@ public class PlayerTopController : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             flashLight.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
+        }
+
+        Debug.Log(Vector3.Distance(transform.localPosition, defaultPosition));
+        Debug.Log(tryRelinking);
+        if (!fixedJoint2D.enabled && tryRelinking) {
+            rigidbody2d.velocity = 12.0f * ((playerBottom.transform.position + defaultPosition) - transform.position);
+            if (Vector3.Distance(transform.localPosition, defaultPosition) < 0.3f)
+            {
+                transform.localPosition = defaultPosition;
+                fixedJoint2D.enabled = true;
+                tryRelinking = false;
+            }
         }
     }
 }

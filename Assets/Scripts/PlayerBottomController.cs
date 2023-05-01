@@ -33,6 +33,9 @@ public class PlayerBottomController : MonoBehaviour
     public float maxFallSpeed;
     public float rotationSpeed;
 
+    [Header("Linking")]
+    public float topSearchRadius;
+
     Rigidbody2D rigidbody2d;
     SpriteRenderer spriteRenderer;
     CapsuleCollider2D capsuleCollider2D;
@@ -41,6 +44,7 @@ public class PlayerBottomController : MonoBehaviour
     Quaternion defaultRotation;
     Vector2 playerSize;
     Vector2 groundCheckSize;
+    Vector3 defaultTopPosition;
     float gravityScale;
 
     [HideInInspector] public float horizontal;
@@ -58,6 +62,7 @@ public class PlayerBottomController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         fixedJoint2D = GetComponent<FixedJoint2D>();
+        defaultTopPosition = transform.GetChild(0).GetComponent<Transform>().localPosition;
         defaultRotation = transform.rotation;
         playerSize = capsuleCollider2D.size;
         gravityScale = rigidbody2d.gravityScale;
@@ -85,7 +90,19 @@ public class PlayerBottomController : MonoBehaviour
         }
 
         if (Input.GetButtonDown("Fire2")) {
-            fixedJoint2D.enabled = !fixedJoint2D.enabled;
+            if (fixedJoint2D.enabled) {
+                fixedJoint2D.enabled = false;
+            }
+            else {
+                var colliders = new List<Collider2D>();
+                Physics2D.OverlapCircle(transform.position, topSearchRadius, new ContactFilter2D().NoFilter(), colliders);
+                foreach (var c in colliders) {
+                    if (c.TryGetComponent(out PlayerTopController playerTopController)) {
+                        var topRigidbody = c.gameObject.GetComponent<Rigidbody2D>();
+                        playerTopController.tryRelinking = true;
+                    }
+                }
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
@@ -101,17 +118,14 @@ public class PlayerBottomController : MonoBehaviour
     }
 
     void OnDrawGizmos() {
-        Vector2 groundCheckCenter = (Vector2) transform.position + (Vector2.down * (transform.localScale.y + playerSize.y) / 3.0f);
-        Gizmos.DrawCube(groundCheckCenter, groundCheckSize);
+        Gizmos.DrawWireSphere(transform.position, topSearchRadius);
     }
 
     void FixedUpdate() {
         // Grounded Check
         lastGroundedTime += Time.fixedDeltaTime;
         Vector2 groundCheckCenter = (Vector2) transform.position + (Vector2.down * (transform.localScale.y + playerSize.y) / 3.0f);
-        print(groundCheckCenter);
         if (Physics2D.OverlapBox(groundCheckCenter, groundCheckSize, 0.0f, LayerMask.GetMask("Default")) != null) {
-            print("ground");
             lastGroundedTime = 0.0f;
         }
 
