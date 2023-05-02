@@ -16,6 +16,7 @@ public class PlayerTopController : MonoBehaviour
     Rigidbody2D rigidbody2d;
     GameObject playerBottom;
     FixedJoint2D fixedJoint2D;
+    Rigidbody2D bottomRigidbody;
     SpriteRenderer spriteRenderer;
     Sprite defaultSprite;
     Vector3 defaultPosition;
@@ -38,6 +39,7 @@ public class PlayerTopController : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         playerBottom = transform.parent.gameObject;
         fixedJoint2D = playerBottom.GetComponent<FixedJoint2D>();
+        bottomRigidbody = playerBottom.GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultSprite = spriteRenderer.sprite;
         defaultPosition = transform.localPosition;
@@ -72,6 +74,9 @@ public class PlayerTopController : MonoBehaviour
                 foreach (var c in colliders) {
                     if (c.TryGetComponent(out PlayerBottomController playerBottomController)) {
                         tryRelinking = true;
+                        if (bottomRigidbody.velocity.y > 0.0f) {
+                            bottomRigidbody.velocity *= new Vector2(1.0f, 0.5f);
+                        }
                     }
                 }
             }
@@ -112,6 +117,7 @@ public class PlayerTopController : MonoBehaviour
             }
             if (!inRange) {
                 tryRelinking = false;
+                
             }
             rigidbody2d.velocity = 12.0f * ((playerBottom.transform.position + defaultPosition) - transform.position);
             if (Vector3.Distance(transform.localPosition, defaultPosition) < 0.3f)
