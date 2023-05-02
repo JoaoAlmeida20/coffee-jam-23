@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
-public class LightSensor : MonoBehaviour
+public class Button : MonoBehaviour
 {
     [Header("General")]
     public bool isPermanent;
+    public float duration;
 
     [Header("Spawn/Despawn Object")]
     public bool shouldSpawnObj = false;
@@ -42,33 +42,41 @@ public class LightSensor : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Light2D light2D = other.GetComponent<Light2D>();
-        if (light2D != null && other.CompareTag("Positive Light"))
-        {
-            if (shouldSpawnObj)
-                spawnedObj = Instantiate(toSpawn, spawnPos, Quaternion.identity);
-            if (shouldDespawnObj)
-                toDespawn.SetActive(false);
-            if (shouldMoveObj){
-                 OriginalPos = toMove.transform.position;
-                 moving = true;
-            }
-        }
+    IEnumerator spawn(float duration) {
+        yield return new WaitForSeconds(duration);
+        Destroy(spawnedObj);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        Light2D light2D = other.GetComponent<Light2D>();
-        if (light2D != null && other.CompareTag("Positive Light"))
+    IEnumerator despawn(float duration) {
+        yield return new WaitForSeconds(duration);
+        toDespawn.SetActive(true);
+    }
+
+    IEnumerator move(float duration) {
+        yield return new WaitForSeconds(duration);
+        moving = false;
+    }
+
+    void OnCollisionEnter2D(Collision2D other){
+        int layer = other.gameObject.layer;
+        if (layer == LayerMask.NameToLayer("Bullet"))
         {
-            if (shouldSpawnObj && !isPermanent)
-                Destroy(spawnedObj);
-            if (shouldDespawnObj && !isPermanent)
-                toDespawn.SetActive(true);
-            if (shouldMoveObj)
-                 moving = false;
+            if (shouldSpawnObj){
+                spawnedObj = Instantiate(toSpawn, spawnPos, Quaternion.identity);
+                if (!isPermanent)
+                    StartCoroutine(spawn(duration));
+            }
+            if (shouldDespawnObj){
+                toDespawn.SetActive(false);
+                if (!isPermanent)
+                    StartCoroutine(despawn(duration));
+            }
+            if (shouldMoveObj){
+                OriginalPos = toMove.transform.position;
+                moving = true;
+                if (!isPermanent)
+                    StartCoroutine(move(duration));
+            }
         }
     }
 }

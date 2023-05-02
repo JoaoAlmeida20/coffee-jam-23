@@ -29,8 +29,8 @@ public class ProjectileController : MonoBehaviour
         if (layer == LayerMask.NameToLayer("Player"))
             return;
         if (layer == LayerMask.NameToLayer("Button")) {
-            var otherChild = other.transform.GetChild(0).gameObject;
-            otherChild.SetActive(!otherChild.activeSelf);
+            //var otherChild = other.transform.GetChild(0).gameObject;
+            //otherChild.SetActive(!otherChild.activeSelf);
         }
         if (layer == LayerMask.NameToLayer("Mirror")){
             //GetComponent<Rigidbody2D>().velocity = Vector3.Reflect(GetComponent<Rigidbody2D>().velocity, other.contacts[0].normal);
