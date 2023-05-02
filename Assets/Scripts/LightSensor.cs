@@ -18,24 +18,28 @@ public class LightSensor : MonoBehaviour
     public bool shouldDespawnObj = false;
     public GameObject toDespawn;
 
-    // [Header("Move Object")]
-    // public bool shouldMoveObj = false;
-    // public GameObject toMove;
-    // public Vector3 movePos;
-    // private Vector3 OriginalPos;
-    // public float speed = .05f;
-    // private bool moving;
+     [Header("Move Object")]
+     public bool shouldMoveObj = false;
+     public GameObject toMove;
+     public Vector3 movePos;
+     private Vector3 OriginalPos;
+     public float speed = .05f;
+     private bool moving;
 
     void Start(){
-        //OriginalPos = toMove.transform.position;
+        if(toMove != null)
+            OriginalPos = toMove.transform.position;
     }
 
     // Update is called once per frame
     void FixedUpdate(){
-        // if (moving)
-        //     toMove.transform.position = Vector3.MoveTowards(toMove.transform.position, movePos, speed);
-        // if (!moving)
-        //     toMove.transform.position = Vector3.MoveTowards(toMove.transform.position, OriginalPos, speed);
+        if (toMove != null)
+        {
+            if (moving)
+                toMove.transform.position = Vector3.MoveTowards(toMove.transform.position, movePos, speed);
+            if (!moving)
+                toMove.transform.position = Vector3.MoveTowards(toMove.transform.position, OriginalPos, speed);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -47,10 +51,10 @@ public class LightSensor : MonoBehaviour
                 spawnedObj = Instantiate(toSpawn, spawnPos, Quaternion.identity);
             if (shouldDespawnObj)
                 toDespawn.SetActive(false);
-            // if (shouldMoveObj){
-            //     OriginalPos = toMove.transform.position;
-            //     moving = true;
-            //}
+            if (shouldMoveObj){
+                 OriginalPos = toMove.transform.position;
+                 moving = true;
+            }
         }
     }
 
@@ -63,8 +67,8 @@ public class LightSensor : MonoBehaviour
                 Destroy(spawnedObj);
             if (shouldDespawnObj && !isPermanent)
                 toDespawn.SetActive(true);
-            // if (shouldMoveObj)
-            //     moving = false;
+            if (shouldMoveObj)
+                 moving = false;
         }
     }
 }
