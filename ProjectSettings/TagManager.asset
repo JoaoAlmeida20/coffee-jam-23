@@ -50,3 +50,6 @@ TagManager:
   - name: Objects
     uniqueID: 4180819999
     locked: 0
+  - name: Projectile
+    uniqueID: 3955389149
+    locked: 0

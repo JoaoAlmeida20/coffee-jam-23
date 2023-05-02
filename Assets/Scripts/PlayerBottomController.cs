@@ -33,13 +33,14 @@ public class PlayerBottomController : MonoBehaviour
     public float maxFallSpeed;
     public float rotationSpeed;
 
-    [Header("Linking")]
-    public float topSearchRadius;
+    [Header("Sprite")]
+    public Sprite movingSprite;
 
     Rigidbody2D rigidbody2d;
     SpriteRenderer spriteRenderer;
     CapsuleCollider2D capsuleCollider2D;
     FixedJoint2D fixedJoint2D;
+    Sprite defaultSprite;
 
     Quaternion defaultRotation;
     Vector2 playerSize;
@@ -68,6 +69,7 @@ public class PlayerBottomController : MonoBehaviour
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         fixedJoint2D = GetComponent<FixedJoint2D>();
         defaultTopPosition = transform.GetChild(0).GetComponent<Transform>().localPosition;
+        defaultSprite = spriteRenderer.sprite;
         defaultRotation = transform.rotation;
         playerSize = capsuleCollider2D.size;
         gravityScale = rigidbody2d.gravityScale;
@@ -92,22 +94,6 @@ public class PlayerBottomController : MonoBehaviour
         }
         if (Input.GetButtonUp("Jump")) {
             jumpReleased = true;
-        }
-
-        if (Input.GetButtonDown("Fire2")) {
-            if (fixedJoint2D.enabled) {
-                fixedJoint2D.enabled = false;
-            }
-            else {
-                var colliders = new List<Collider2D>();
-                Physics2D.OverlapCircle(transform.position, topSearchRadius, new ContactFilter2D().NoFilter(), colliders);
-                foreach (var c in colliders) {
-                    if (c.TryGetComponent(out PlayerTopController playerTopController)) {
-                        var topRigidbody = c.gameObject.GetComponent<Rigidbody2D>();
-                        playerTopController.tryRelinking = true;
-                    }
-                }
-            }
         }
         
         //Negative Flashlight
@@ -221,6 +207,16 @@ public class PlayerBottomController : MonoBehaviour
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             flashLight.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 
+        }
+
+        // Change Sprite if moving
+        if (Mathf.Abs(rigidbody2d.velocity.x) > 0.2f) {
+            spriteRenderer.sprite = movingSprite;
+            spriteRenderer.flipX = Mathf.Sign(rigidbody2d.velocity.x) == -1;
+        }
+        else {
+            spriteRenderer.sprite = defaultSprite;
+            spriteRenderer.flipX = false;
         }
     }
 }

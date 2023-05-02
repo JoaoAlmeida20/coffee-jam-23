@@ -11,17 +11,25 @@ public class PlayerTopController : MonoBehaviour
 
     bool fire;
     float cooldownTimer;
-    [SerializeField] public bool tryRelinking;
+    [HideInInspector] public bool tryRelinking;
 
     Rigidbody2D rigidbody2d;
     GameObject playerBottom;
     FixedJoint2D fixedJoint2D;
+    SpriteRenderer spriteRenderer;
+    Sprite defaultSprite;
     Vector3 defaultPosition;
 
     [Header("FlashLight")]
     public float intensity;
     public GameObject flashLight;
     bool lightState;
+
+    [Header("Linking")]
+    public float topSearchRadius;
+
+    [Header("Sprite")]
+    public Sprite movingSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +38,8 @@ public class PlayerTopController : MonoBehaviour
         rigidbody2d = GetComponent<Rigidbody2D>();
         playerBottom = transform.parent.gameObject;
         fixedJoint2D = playerBottom.GetComponent<FixedJoint2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultSprite = spriteRenderer.sprite;
         defaultPosition = transform.localPosition;
     }
 
@@ -50,6 +60,20 @@ public class PlayerTopController : MonoBehaviour
             {
                 flashLight.GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = 0;
                 flashLight.SetActive(false);
+            }
+        }
+        if (Input.GetButtonDown("Fire2")) {
+            if (fixedJoint2D.enabled) {
+                fixedJoint2D.enabled = false;
+            }
+            else {
+                var colliders = new List<Collider2D>();
+                Physics2D.OverlapCircle(transform.position, topSearchRadius, new ContactFilter2D().NoFilter(), colliders);
+                foreach (var c in colliders) {
+                    if (c.TryGetComponent(out PlayerBottomController playerBottomController)) {
+                        tryRelinking = true;
+                    }
+                }
             }
         }
     }
@@ -77,6 +101,18 @@ public class PlayerTopController : MonoBehaviour
         //if (!fixedJoint2D.enabled) rigidbody2d.gravityScale = 0;      //Code to leave it floating
 
         if (!fixedJoint2D.enabled && tryRelinking) {
+            var colliders = new List<Collider2D>();
+            Physics2D.OverlapCircle(transform.position, topSearchRadius, new ContactFilter2D().NoFilter(), colliders);
+            bool inRange = false;
+            foreach (var c in colliders) {
+                if (c.TryGetComponent(out PlayerBottomController playerBottomController)) {
+                    inRange = true;
+                    break;
+                }
+            }
+            if (!inRange) {
+                tryRelinking = false;
+            }
             rigidbody2d.velocity = 12.0f * ((playerBottom.transform.position + defaultPosition) - transform.position);
             if (Vector3.Distance(transform.localPosition, defaultPosition) < 0.3f)
             {
@@ -85,6 +121,16 @@ public class PlayerTopController : MonoBehaviour
                 tryRelinking = false;
                 //rigidbody2d.gravityScale = 1;                         //Code to leave it floating
             }
+        }
+
+        // Change Sprite if moving
+        if (Mathf.Abs(rigidbody2d.velocity.x) > 0.2f) {
+            spriteRenderer.sprite = movingSprite;
+            spriteRenderer.flipX = Mathf.Sign(rigidbody2d.velocity.x) == -1;
+        }
+        else {
+            spriteRenderer.sprite = defaultSprite;
+            spriteRenderer.flipX = false;
         }
     }
 }
