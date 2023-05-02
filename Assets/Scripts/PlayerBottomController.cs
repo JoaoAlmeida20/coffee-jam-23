@@ -46,6 +46,11 @@ public class PlayerBottomController : MonoBehaviour
     Vector2 groundCheckSize;
     Vector3 defaultTopPosition;
     float gravityScale;
+    
+    [Header("FlashLight")]
+    public float intensity;
+    public GameObject flashLight;
+    bool lightState;
 
     [HideInInspector] public float horizontal;
     [HideInInspector] public float vertical;
@@ -102,6 +107,21 @@ public class PlayerBottomController : MonoBehaviour
                         playerTopController.tryRelinking = true;
                     }
                 }
+            }
+        }
+        
+        //Negative Flashlight
+        if (Input.GetKeyDown(KeyCode.K)) {
+            lightState = !lightState;
+            if (lightState)
+            {
+                flashLight.GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = intensity;
+                flashLight.SetActive(true);
+            }
+            else
+            {
+                flashLight.GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = 0;
+                flashLight.SetActive(false);
             }
         }
 
@@ -196,6 +216,15 @@ public class PlayerBottomController : MonoBehaviour
                     obj.GetComponent<Rigidbody2D>().AddForce(directionToPlayer * pullForce);
                 }
             }
+        }
+        
+        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, -Camera.main.transform.position.z)) - transform.position;
+
+        //Negative Light
+        if (lightState){
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            flashLight.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+
         }
     }
 }

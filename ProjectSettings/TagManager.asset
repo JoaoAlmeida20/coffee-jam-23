@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Movable
+  - Negative Light
+  - Positive Light
   layers:
   - Default
   - TransparentFX
