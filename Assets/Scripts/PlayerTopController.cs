@@ -74,6 +74,8 @@ public class PlayerTopController : MonoBehaviour
 
         Debug.Log(Vector3.Distance(transform.localPosition, defaultPosition));
         Debug.Log(tryRelinking);
+        //if (!fixedJoint2D.enabled) rigidbody2d.gravityScale = 0;      //Code to leave it floating
+
         if (!fixedJoint2D.enabled && tryRelinking) {
             rigidbody2d.velocity = 12.0f * ((playerBottom.transform.position + defaultPosition) - transform.position);
             if (Vector3.Distance(transform.localPosition, defaultPosition) < 0.3f)
@@ -81,6 +83,7 @@ public class PlayerTopController : MonoBehaviour
                 transform.localPosition = defaultPosition;
                 fixedJoint2D.enabled = true;
                 tryRelinking = false;
+                //rigidbody2d.gravityScale = 1;                         //Code to leave it floating
             }
         }
     }
