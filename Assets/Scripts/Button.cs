@@ -10,6 +10,10 @@ public class Button : MonoBehaviour
     public float duration;
     private AudioManager audioManager;
 
+    [Header("Final Check")]
+    public bool shouldOpendoor;
+    public FinalDoor door;
+
     [Header("Spawn/Despawn Object")]
     public bool shouldSpawnObj = false;
     public GameObject toSpawn;
@@ -61,6 +65,11 @@ public class Button : MonoBehaviour
         moving = false;
     }
 
+    IEnumerator doorTimer(float duration) {
+        yield return new WaitForSeconds(duration);
+        door.conditionFalse();
+    }
+
     void OnCollisionEnter2D(Collision2D other){
         int layer = other.gameObject.layer;
         if (layer == LayerMask.NameToLayer("Bullet"))
@@ -81,6 +90,11 @@ public class Button : MonoBehaviour
                 moving = true;
                 if (!isPermanent)
                     StartCoroutine(move(duration));
+            }
+            if (shouldOpendoor){
+                door.conditionTrue();
+                if (!isPermanent)
+                    StartCoroutine(doorTimer(duration));
             }
         }
     }

@@ -111,8 +111,8 @@ public class PlayerTopController : MonoBehaviour
 
         }
 
-        Debug.Log(Vector3.Distance(transform.localPosition, defaultPosition));
-        Debug.Log(tryRelinking);
+        //Debug.Log(Vector3.Distance(transform.localPosition, defaultPosition));
+        //Debug.Log(tryRelinking);
         //if (!fixedJoint2D.enabled) rigidbody2d.gravityScale = 0;      //Code to leave it floating
 
         if (!fixedJoint2D.enabled && tryRelinking) {

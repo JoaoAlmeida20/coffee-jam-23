@@ -8,8 +8,8 @@ public class FinalDoor : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Sprite openSprite;
     public int ConditionCount;
-    private int conditionsTrue;
-    public Scene nextLvl;
+    private int conditionsTrue = 0;
+    public string nextLvl;
     private bool isOpen;
 
     void Start()
@@ -18,10 +18,12 @@ public class FinalDoor : MonoBehaviour
     }
 
     public void conditionTrue(){
-        ConditionCount++;
+        conditionsTrue++;
+        print(conditionsTrue);
     }
     public void conditionFalse(){
-        ConditionCount--;
+        conditionsTrue--;
+        print(conditionsTrue);
     }
     
     void Update()
@@ -41,9 +43,9 @@ public class FinalDoor : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Player") && isOpen)
         {
-            if (other.gameObject.GetComponent<FixedJoint2D>().enabled)
+            if (other.gameObject.GetComponent<FixedJoint2D>() != null && other.gameObject.GetComponent<FixedJoint2D>().enabled)
             {
-                SceneManager.LoadScene(nextLvl.buildIndex);
+                SceneManager.LoadScene(nextLvl);
             }
         }
     }
