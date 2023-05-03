@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,6 +48,8 @@ public class PlayerBottomController : MonoBehaviour
     Vector2 groundCheckSize;
     Vector3 defaultTopPosition;
     float gravityScale;
+
+    private AudioManager audioManager;
     
     [Header("FlashLight")]
     public float intensity;
@@ -78,6 +81,7 @@ public class PlayerBottomController : MonoBehaviour
         lastJumpedTime = jumpBufferTime + 1.0f;
         lastGroundedTime = jumpCoyoteTime + 1.0f;
         movableObjects = GameObject.FindGameObjectsWithTag(movableTag);
+        audioManager = GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -86,6 +90,7 @@ public class PlayerBottomController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Jump")) {
+            audioManager.Play("Jump");
             lastJumpedTime = 0.0f;
             jumpReleased = false;
         }
@@ -98,6 +103,7 @@ public class PlayerBottomController : MonoBehaviour
         
         //Negative Flashlight
         if (Input.GetKeyDown(KeyCode.K)) {
+            audioManager.Play("Flashlight");
             lightState = !lightState;
             if (lightState)
             {
@@ -116,9 +122,11 @@ public class PlayerBottomController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.G)) {
+            audioManager.Play("Pulling");
             isPulling = true;
         }
         if (Input.GetKeyUp(KeyCode.G)) {
+            audioManager.Play("NotPulling");
             isPulling = false;
         }
     }

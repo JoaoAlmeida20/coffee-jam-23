@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -21,6 +22,8 @@ public class PlayerTopController : MonoBehaviour
     Sprite defaultSprite;
     Vector3 defaultPosition;
 
+    private AudioManager audioManager;
+    
     [Header("FlashLight")]
     public float intensity;
     public GameObject flashLight;
@@ -43,6 +46,7 @@ public class PlayerTopController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultSprite = spriteRenderer.sprite;
         defaultPosition = transform.localPosition;
+        audioManager = GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -50,8 +54,10 @@ public class PlayerTopController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1")) {
             fire = true;
+            audioManager.Play("Shoot");
         }
         if (Input.GetKeyDown(KeyCode.L)) {
+            audioManager.Play("Flashlight");
             lightState = !lightState;
             if (lightState)
             {
@@ -66,6 +72,7 @@ public class PlayerTopController : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire2")) {
             if (fixedJoint2D.enabled) {
+                audioManager.Play("Joint");
                 fixedJoint2D.enabled = false;
             }
             else {
@@ -122,6 +129,7 @@ public class PlayerTopController : MonoBehaviour
             rigidbody2d.velocity = 12.0f * ((playerBottom.transform.position + defaultPosition) - transform.position);
             if (Vector3.Distance(transform.localPosition, defaultPosition) < 0.3f)
             {
+                audioManager.Play("ReJoint");
                 transform.localPosition = defaultPosition;
                 fixedJoint2D.enabled = true;
                 tryRelinking = false;
