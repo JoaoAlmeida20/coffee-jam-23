@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    private AudioManager audioManager;
     public float maxLifetime;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioManager = GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,7 @@ public class ProjectileController : MonoBehaviour
             //otherChild.SetActive(!otherChild.activeSelf);
         }
         if (layer == LayerMask.NameToLayer("Mirror")){
+            audioManager.Play("Mirror");
             //GetComponent<Rigidbody2D>().velocity = Vector3.Reflect(GetComponent<Rigidbody2D>().velocity, other.contacts[0].normal);
             return;
         }
