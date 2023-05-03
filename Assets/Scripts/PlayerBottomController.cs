@@ -102,7 +102,7 @@ public class PlayerBottomController : MonoBehaviour
         }
         
         //Negative Flashlight
-        if (Input.GetKeyDown(KeyCode.K)) {
+        if (Input.GetKeyDown(KeyCode.E)) {
             audioManager.Play("Flashlight");
             lightState = !lightState;
             if (lightState)
@@ -118,14 +118,15 @@ public class PlayerBottomController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.R)) {
-            transform.position = new Vector3(0, 5, 0);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
         }
-
-        if (Input.GetKeyDown(KeyCode.G)) {
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
             audioManager.Play("Pulling");
             isPulling = true;
         }
-        if (Input.GetKeyUp(KeyCode.G)) {
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {
             audioManager.Play("NotPulling");
             isPulling = false;
         }
@@ -218,7 +219,7 @@ public class PlayerBottomController : MonoBehaviour
         }
 
         // Change Sprite if moving
-        if (Mathf.Abs(rigidbody2d.velocity.x) > 0.2f) {
+        if (Mathf.Abs(rigidbody2d.velocity.x) > 0.4f) {
             spriteRenderer.sprite = movingSprite;
             spriteRenderer.flipX = Mathf.Sign(rigidbody2d.velocity.x) == -1;
         }

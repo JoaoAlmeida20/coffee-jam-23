@@ -56,7 +56,8 @@ public class PlayerTopController : MonoBehaviour
             fire = true;
             audioManager.Play("Shoot");
         }
-        if (Input.GetKeyDown(KeyCode.L)) {
+        
+        if (Input.GetKeyDown(KeyCode.Mouse2)) {
             audioManager.Play("Flashlight");
             lightState = !lightState;
             if (lightState)
@@ -138,7 +139,7 @@ public class PlayerTopController : MonoBehaviour
         }
 
         // Change Sprite if moving
-        if (Mathf.Abs(rigidbody2d.velocity.x) > 0.2f) {
+        if (Mathf.Abs(rigidbody2d.velocity.x) > 0.4f) {
             spriteRenderer.sprite = movingSprite;
             spriteRenderer.flipX = Mathf.Sign(rigidbody2d.velocity.x) == -1;
         }
