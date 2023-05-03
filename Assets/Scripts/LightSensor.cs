@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Audio;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -7,6 +6,8 @@ public class LightSensor : MonoBehaviour
 {
     [Header("General")]
     public bool isPermanent;
+
+    private AudioManager audioManager;
 
     [Header("Spawn/Despawn Object")]
     public bool shouldSpawnObj = false;
@@ -26,7 +27,9 @@ public class LightSensor : MonoBehaviour
      public float speed = .05f;
      private bool moving;
 
-    void Start(){
+    void Start()
+    {
+        audioManager = GetComponent<AudioManager>();
         if(toMove != null)
             OriginalPos = toMove.transform.position;
     }
@@ -47,6 +50,7 @@ public class LightSensor : MonoBehaviour
         Light2D light2D = other.GetComponent<Light2D>();
         if (light2D != null && other.CompareTag("Positive Light"))
         {
+            audioManager.Play("LitUP");
             if (shouldSpawnObj)
                 spawnedObj = Instantiate(toSpawn, spawnPos, Quaternion.identity);
             if (shouldDespawnObj)

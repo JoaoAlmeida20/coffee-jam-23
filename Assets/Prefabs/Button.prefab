@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4555630821981636382}
   - component: {fileID: 4555630821981636380}
   - component: {fileID: 4555630821981636381}
+  - component: {fileID: -6710223325719411666}
   m_Layer: 6
   m_Name: Button
   m_TagString: Untagged
@@ -102,6 +103,26 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.00000023841858}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &-6710223325719411666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4555630821981636383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b211f394621a5ec42bb65f7398fa2f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: d8d04c6f80a1140db85ede568dab1f51, type: 3}
+    volume: 0.5
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &4555630822042933393
 GameObject:
   m_ObjectHideFlags: 0
