@@ -87,6 +87,8 @@ public class PlayerBottomController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseSystem.isPaused) return;
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Jump")) {
