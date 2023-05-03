@@ -21,27 +21,6 @@ public class PlantGrowthController : MonoBehaviour
     
     private void Start()
     {
-        //Check the direction to grow
-        /*if (transform.rotation.z == 0f) //grow up
-        {
-            maxGrowthVector = new Vector3(transform.position.x, transform.position.y + maxGrowthNumber, transform.position.z);
-            minGrowthVector = new Vector3(transform.position.x, transform.position.y - minGrowthNumber, transform.position.z);
-        }
-        else if (transform.rotation.z == 90f) //grow to the left
-        {
-            maxGrowthVector = new Vector3(transform.position.x - maxGrowthNumber, transform.position.y, transform.position.z);
-            minGrowthVector = new Vector3(transform.position.x + minGrowthNumber, transform.position.y, transform.position.z);
-        }
-        else if (transform.rotation.z == 270f) //grow to the right
-        {
-            maxGrowthVector = new Vector3(transform.position.x + maxGrowthNumber, transform.position.y, transform.position.z);
-            minGrowthVector = new Vector3(transform.position.x - minGrowthNumber, transform.position.y, transform.position.z);
-        }
-        else if (transform.rotation.z == 180f) //grow down
-        {
-            maxGrowthVector = new Vector3(transform.position.x, transform.position.y - maxGrowthNumber, transform.position.z);
-            minGrowthVector = new Vector3(transform.position.x, transform.position.y + minGrowthNumber, transform.position.z);
-        }*/
         if (goUp) //grow up
         {
             maxGrowthVector = new Vector3(transform.position.x, transform.position.y + maxGrowthNumber, transform.position.z);

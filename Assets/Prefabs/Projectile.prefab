@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6958093093282441148}
   - component: {fileID: 459254037048849718}
   - component: {fileID: 3724173755826461261}
+  - component: {fileID: 6409585583495036607}
   m_Layer: 8
   m_Name: Projectile
   m_TagString: Untagged
@@ -138,6 +139,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6409585583495036607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4464025326511429736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b211f394621a5ec42bb65f7398fa2f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Mirror
+    clip: {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
+    volume: 0.5
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: 84e427d6b66ab4066b6a4dcd0ce819ee, type: 3}
+    volume: 0.5
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &4599065290245219422
 GameObject:
   m_ObjectHideFlags: 0

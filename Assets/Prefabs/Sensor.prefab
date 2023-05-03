@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4626906545732119486}
   - component: {fileID: 4626906545732119485}
   - component: {fileID: 4626906545732119484}
+  - component: {fileID: 7501213235562789695}
   m_Layer: 6
   m_Name: Sensor
   m_TagString: Untagged
@@ -124,3 +125,23 @@ MonoBehaviour:
   toMove: {fileID: 0}
   movePos: {x: 11.8, y: 0, z: 0}
   speed: 0.05
+--- !u!114 &7501213235562789695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4626906545732119482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b211f394621a5ec42bb65f7398fa2f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: LitUP
+    clip: {fileID: 8300000, guid: cf6c0e7fbef9449c98a0cdb5ea0c4d9f, type: 3}
+    volume: 0.5
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}

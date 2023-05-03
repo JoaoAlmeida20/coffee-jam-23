@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UnityEngine;
 
 public class Button : MonoBehaviour
@@ -7,6 +8,7 @@ public class Button : MonoBehaviour
     [Header("General")]
     public bool isPermanent;
     public float duration;
+    private AudioManager audioManager;
 
     [Header("Spawn/Despawn Object")]
     public bool shouldSpawnObj = false;
@@ -26,7 +28,9 @@ public class Button : MonoBehaviour
      public float speed = .05f;
      private bool moving;
 
-    void Start(){
+    void Start()
+    {
+        audioManager = GetComponent<AudioManager>();
         if(toMove != null)
             OriginalPos = toMove.transform.position;
     }
@@ -61,6 +65,7 @@ public class Button : MonoBehaviour
         int layer = other.gameObject.layer;
         if (layer == LayerMask.NameToLayer("Bullet"))
         {
+            audioManager.Play("ButtonClick");
             if (shouldSpawnObj){
                 spawnedObj = Instantiate(toSpawn, spawnPos, Quaternion.identity);
                 if (!isPermanent)

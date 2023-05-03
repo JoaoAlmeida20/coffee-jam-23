@@ -62,11 +62,13 @@ public class PlayerTopController : MonoBehaviour
             lightState = !lightState;
             if (lightState)
             {
+                audioManager.Play("LightHum");
                 flashLight.GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = intensity;
                 flashLight.SetActive(true);
             }
             else
             {
+                audioManager.Stop("LightHum");
                 flashLight.GetComponent<UnityEngine.Rendering.Universal.Light2D>().intensity = 0;
                 flashLight.SetActive(false);
             }
