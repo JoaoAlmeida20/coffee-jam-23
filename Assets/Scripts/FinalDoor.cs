@@ -46,6 +46,7 @@ public class FinalDoor : MonoBehaviour
             if (other.gameObject.GetComponent<FixedJoint2D>() != null && other.gameObject.GetComponent<FixedJoint2D>().enabled)
             {
                 SceneManager.LoadScene(nextLvl);
+                PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);
             }
         }
     }
