@@ -13,6 +13,7 @@ public class LightSensor : MonoBehaviour
     public FinalDoor door;
 
     private AudioManager audioManager;
+    private Light2D light2d;
 
     [Header("Spawn/Despawn Object")]
     public bool shouldSpawnObj = false;
@@ -36,6 +37,7 @@ public class LightSensor : MonoBehaviour
     void Start()
     {
         audioManager = GetComponent<AudioManager>();
+        light2d = GetComponent<Light2D>();
         if(toMove != null)
             OriginalPos = toMove.transform.position;
     }
@@ -60,6 +62,7 @@ public class LightSensor : MonoBehaviour
         Light2D light2D = other.GetComponent<Light2D>();
         if (light2D != null && (other.CompareTag("Positive Light") || other.CompareTag("Negative Light")))
         {
+            light2d.enabled = true;
             audioManager.Play("LitUP");
             if (shouldSpawnObj)
                 spawnedObj = Instantiate(toSpawn, spawnPos, Quaternion.identity);
@@ -81,6 +84,7 @@ public class LightSensor : MonoBehaviour
         Light2D light2D = other.GetComponent<Light2D>();
         if (light2D != null && (other.CompareTag("Positive Light") || other.CompareTag("Negative Light")))
         {
+            light2d.enabled = false;
             if (shouldSpawnObj && !isPermanent)
                 Destroy(spawnedObj);
             if (shouldDespawnObj && !isPermanent)
