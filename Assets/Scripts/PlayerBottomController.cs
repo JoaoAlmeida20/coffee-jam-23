@@ -140,7 +140,7 @@ public class PlayerBottomController : MonoBehaviour
         // Grounded Check
         lastGroundedTime += Time.fixedDeltaTime;
         Vector2 groundCheckCenter = (Vector2) transform.position + (Vector2.down * (transform.localScale.y + playerSize.y) / 3.0f);
-        if (Physics2D.OverlapBox(groundCheckCenter, groundCheckSize, 0.0f, LayerMask.GetMask("Default")) != null) {
+        if (Physics2D.OverlapBox(groundCheckCenter, groundCheckSize, 0.0f, LayerMask.GetMask("Default", "Button")) != null) {
             lastGroundedTime = 0.0f;
         }
 

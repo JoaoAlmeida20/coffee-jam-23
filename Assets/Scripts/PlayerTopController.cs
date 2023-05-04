@@ -86,7 +86,6 @@ public class PlayerTopController : MonoBehaviour
                 fixedJoint2D.enabled = false;
             }
             else if (relinkCooldownTimer <= 0.0f) {
-                print("hello");
                 var colliders = new List<Collider2D>();
                 Physics2D.OverlapCircle(transform.position, topSearchRadius, new ContactFilter2D().NoFilter(), colliders);
                 foreach (var c in colliders) {
