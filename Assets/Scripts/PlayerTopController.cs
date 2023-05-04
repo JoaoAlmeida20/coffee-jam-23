@@ -13,6 +13,8 @@ public class PlayerTopController : MonoBehaviour
     bool fire;
     float cooldownTimer;
     [HideInInspector] public bool tryRelinking;
+    float heightLink;
+    float relinkCooldownTimer;
 
     Rigidbody2D rigidbody2d;
     GameObject playerBottom;
@@ -31,6 +33,8 @@ public class PlayerTopController : MonoBehaviour
 
     [Header("Linking")]
     public float topSearchRadius;
+    public float maxHeightLink;
+    public float relinkCooldownTime;
 
     [Header("Sprite")]
     public Sprite movingSprite;
@@ -39,6 +43,7 @@ public class PlayerTopController : MonoBehaviour
     void Start()
     {
         cooldownTimer = 0.0f;
+        relinkCooldownTimer = 0.0f;
         rigidbody2d = GetComponent<Rigidbody2D>();
         playerBottom = transform.parent.gameObject;
         fixedJoint2D = playerBottom.GetComponent<FixedJoint2D>();
@@ -52,6 +57,8 @@ public class PlayerTopController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseSystem.isPaused) return;
+
         if (Input.GetButtonDown("Fire1")) {
             fire = true;
             audioManager.Play("Shoot");
@@ -78,12 +85,14 @@ public class PlayerTopController : MonoBehaviour
                 audioManager.Play("Joint");
                 fixedJoint2D.enabled = false;
             }
-            else {
+            else if (relinkCooldownTimer <= 0.0f) {
+                print("hello");
                 var colliders = new List<Collider2D>();
                 Physics2D.OverlapCircle(transform.position, topSearchRadius, new ContactFilter2D().NoFilter(), colliders);
                 foreach (var c in colliders) {
                     if (c.TryGetComponent(out PlayerBottomController playerBottomController)) {
                         tryRelinking = true;
+                        heightLink = rigidbody2d.position.y;
                         if (bottomRigidbody.velocity.y > 0.0f) {
                             bottomRigidbody.velocity *= new Vector2(1.0f, 0.5f);
                         }
@@ -96,6 +105,9 @@ public class PlayerTopController : MonoBehaviour
     void FixedUpdate() {
         if (cooldownTimer > 0.0f) {
             cooldownTimer -= Time.fixedDeltaTime;
+        }
+        if (relinkCooldownTimer > 0.0f) {
+            relinkCooldownTimer -= Time.fixedDeltaTime;
         }
         Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, -Camera.main.transform.position.z)) - transform.position;
 
@@ -111,8 +123,6 @@ public class PlayerTopController : MonoBehaviour
 
         }
 
-        //Debug.Log(Vector3.Distance(transform.localPosition, defaultPosition));
-        //Debug.Log(tryRelinking);
         //if (!fixedJoint2D.enabled) rigidbody2d.gravityScale = 0;      //Code to leave it floating
 
         if (!fixedJoint2D.enabled && tryRelinking) {
@@ -125,18 +135,21 @@ public class PlayerTopController : MonoBehaviour
                     break;
                 }
             }
-            if (!inRange) {
+            if (!inRange || maxHeightLink < rigidbody2d.position.y - heightLink) {
                 tryRelinking = false;
-                
+                rigidbody2d.velocity *= new Vector2(0.2f, 0.1f);
+                relinkCooldownTimer = relinkCooldownTime;
             }
-            rigidbody2d.velocity = 12.0f * ((playerBottom.transform.position + defaultPosition) - transform.position);
-            if (Vector3.Distance(transform.localPosition, defaultPosition) < 0.3f)
-            {
-                audioManager.Play("ReJoint");
-                transform.localPosition = defaultPosition;
-                fixedJoint2D.enabled = true;
-                tryRelinking = false;
-                //rigidbody2d.gravityScale = 1;                         //Code to leave it floating
+            if (tryRelinking) {
+                rigidbody2d.velocity = 12.0f * ((playerBottom.transform.position + defaultPosition) - transform.position);
+                if (Vector3.Distance(transform.localPosition, defaultPosition) < 0.3f)
+                {
+                    audioManager.Play("ReJoint");
+                    transform.localPosition = defaultPosition;
+                    fixedJoint2D.enabled = true;
+                    tryRelinking = false;
+                    //rigidbody2d.gravityScale = 1;                         //Code to leave it floating
+                }
             }
         }
 
