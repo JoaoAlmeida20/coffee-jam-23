@@ -64,7 +64,7 @@ public class PlayerTopController : MonoBehaviour
             audioManager.Play("Shoot");
         }
         
-        if (Input.GetKeyDown(KeyCode.Mouse2)) {
+        if (Input.GetKeyDown(KeyCode.Mouse2) || Input.GetKeyDown(KeyCode.RightShift)) {
             audioManager.Play("Flashlight");
             lightState = !lightState;
             if (lightState)
