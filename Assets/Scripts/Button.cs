@@ -31,6 +31,8 @@ public class Button : MonoBehaviour
      private Vector3 OriginalPos;
      public float speed = .05f;
      private bool moving;
+     private bool busy;
+     private bool hasMoved;
 
     void Start()
     {
@@ -45,35 +47,46 @@ public class Button : MonoBehaviour
         {
             if (moving)
                 toMove.transform.position = Vector3.MoveTowards(toMove.transform.position, movePos, speed);
-            if (!moving)
+            if (!moving && hasMoved)
                 toMove.transform.position = Vector3.MoveTowards(toMove.transform.position, OriginalPos, speed);
+            if (toMove.transform.position == OriginalPos)
+                hasMoved = false;
         }
     }
 
     IEnumerator spawn(float duration) {
+        busy = true;
         yield return new WaitForSeconds(duration);
         Destroy(spawnedObj);
+        busy = false;
     }
 
     IEnumerator despawn(float duration) {
+        busy = true;
         yield return new WaitForSeconds(duration);
         toDespawn.SetActive(true);
+        busy = false;
     }
 
     IEnumerator move(float duration) {
+        busy = true;
         yield return new WaitForSeconds(duration);
         moving = false;
+        busy = false;
     }
 
     IEnumerator doorTimer(float duration) {
+        busy = true;
         yield return new WaitForSeconds(duration);
         door.conditionFalse();
+        busy = false;
     }
 
     void OnCollisionEnter2D(Collision2D other){
         int layer = other.gameObject.layer;
-        if (layer == LayerMask.NameToLayer("Bullet"))
+        if (layer == LayerMask.NameToLayer("Bullet") && !busy)
         {
+            busy = false;
             audioManager.Play("ButtonClick");
             if (shouldSpawnObj){
                 spawnedObj = Instantiate(toSpawn, spawnPos, Quaternion.identity);
@@ -86,7 +99,7 @@ public class Button : MonoBehaviour
                     StartCoroutine(despawn(duration));
             }
             if (shouldMoveObj){
-                OriginalPos = toMove.transform.position;
+                hasMoved = true;
                 moving = true;
                 if (!isPermanent)
                     StartCoroutine(move(duration));

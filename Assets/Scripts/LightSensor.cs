@@ -31,6 +31,7 @@ public class LightSensor : MonoBehaviour
      private Vector3 OriginalPos;
      public float speed = .05f;
      private bool moving;
+     private bool hasMoved;
 
     void Start()
     {
@@ -45,8 +46,10 @@ public class LightSensor : MonoBehaviour
         {
             if (moving)
                 toMove.transform.position = Vector3.MoveTowards(toMove.transform.position, movePos, speed);
-            if (!moving)
+            if (!moving && hasMoved)
                 toMove.transform.position = Vector3.MoveTowards(toMove.transform.position, OriginalPos, speed);
+            if (toMove.transform.position == OriginalPos && !isPermanent)
+                hasMoved = false;
         }
     }
 
@@ -63,7 +66,7 @@ public class LightSensor : MonoBehaviour
             if (shouldDespawnObj)
                 toDespawn.SetActive(false);
             if (shouldMoveObj){
-                 OriginalPos = toMove.transform.position;
+                hasMoved = true;
                  moving = true;
             }
             if (shouldOpendoor)
@@ -82,7 +85,7 @@ public class LightSensor : MonoBehaviour
                 Destroy(spawnedObj);
             if (shouldDespawnObj && !isPermanent)
                 toDespawn.SetActive(true);
-            if (shouldMoveObj)
+            if (shouldMoveObj && !isPermanent)
                 moving = false;
             if (shouldOpendoor && !isPermanent)
                 door.conditionFalse();
