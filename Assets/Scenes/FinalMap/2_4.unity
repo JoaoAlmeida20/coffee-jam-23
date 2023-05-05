@@ -648,6 +648,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3045530076599187209, guid: 8169eb106382ada4f9d9f4493cb9f6ad, type: 3}
+      propertyPath: nextLvl
+      value: 2_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045530076599187209, guid: 8169eb106382ada4f9d9f4493cb9f6ad, type: 3}
       propertyPath: ConditionCount
       value: 1
       objectReference: {fileID: 0}

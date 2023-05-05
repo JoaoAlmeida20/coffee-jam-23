@@ -11,10 +11,18 @@ public class FinalDoor : MonoBehaviour
     private int conditionsTrue = 0;
     public string nextLvl;
     private bool isOpen;
+    public GameObject extraDoor;
+    private bool moving;
+    private bool hasMoved;
+    private Vector3 OriginalPos;
+    public Vector3 movePos;
+    public float speed = .05f;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if(extraDoor != null)
+            OriginalPos = extraDoor.transform.position;
     }
 
     public void conditionTrue(){
@@ -34,9 +42,26 @@ public class FinalDoor : MonoBehaviour
         }
     }
 
+    void FixedUpdate(){
+        if (extraDoor != null)
+        {
+            if (moving)
+                extraDoor.transform.position = Vector3.MoveTowards(extraDoor.transform.position, movePos, speed);
+            if (!moving && hasMoved)
+                extraDoor.transform.position = Vector3.MoveTowards(extraDoor.transform.position, OriginalPos, speed);
+            if (extraDoor.transform.position == OriginalPos)
+                hasMoved = false;
+        }
+    }
+
     public void Open(){
         isOpen = true;
         spriteRenderer.sprite = openSprite;
+        if (extraDoor != null)
+        {
+            hasMoved = true;
+            moving = true;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
