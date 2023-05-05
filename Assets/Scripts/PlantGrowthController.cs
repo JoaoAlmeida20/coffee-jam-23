@@ -33,8 +33,8 @@ public class PlantGrowthController : MonoBehaviour
         }
         else if (goRight) //grow right
         {
-            maxGrowthVector = new Vector3(transform.position.x + minGrowthNumber, transform.position.y, transform.position.z);
-            minGrowthVector = new Vector3(transform.position.x - maxGrowthNumber, transform.position.y, transform.position.z);
+            maxGrowthVector = new Vector3(transform.position.x + maxGrowthNumber, transform.position.y, transform.position.z);
+            minGrowthVector = new Vector3(transform.position.x - minGrowthNumber, transform.position.y, transform.position.z);
         }
         else if (goLeft) //grow left
         {
