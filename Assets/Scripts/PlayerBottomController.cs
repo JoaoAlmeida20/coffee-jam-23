@@ -120,11 +120,6 @@ public class PlayerBottomController : MonoBehaviour
                 flashLight.SetActive(false);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.R)) {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
-        }
         
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
             audioManager.Play("Pulling");
