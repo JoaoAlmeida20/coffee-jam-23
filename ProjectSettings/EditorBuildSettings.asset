@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/FinalMap/Menu.unity
     guid: cd99c9f87bf72564cb26909ab1caf116
   - enabled: 1
     path: Assets/Scenes/FinalMap/Tutorial_0.unity
@@ -21,8 +21,29 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalMap/Tutorial_3.unity
     guid: c6ce284e5e3631241bf9cc0adbe71866
   - enabled: 1
+    path: Assets/Scenes/FinalMap/Tutorial_4.unity
+    guid: e508263424d098b48863ea1dc3c31a30
+  - enabled: 1
+    path: Assets/Scenes/FinalMap/1_1.unity
+    guid: 23df89dddcc96b14080fcc8dbd4d2be3
+  - enabled: 1
+    path: Assets/Scenes/FinalMap/1_2.unity
+    guid: d3d4236d966f0e94294724b56dc72917
+  - enabled: 1
+    path: Assets/Scenes/FinalMap/1_3.unity
+    guid: 285956fdaffe89443a091ea8fc9a96d1
+  - enabled: 1
     path: Assets/Scenes/FinalMap/2_1.unity
     guid: 09e79a4fcc008314b8c92a1a9d592500
+  - enabled: 1
+    path: Assets/Scenes/FinalMap/2_2.unity
+    guid: 71cdfd4b02bf6614598f062dbe6ae759
+  - enabled: 1
+    path: Assets/Scenes/FinalMap/2_3.unity
+    guid: ce38c4a181f3ca4458a49cf138e28926
+  - enabled: 1
+    path: Assets/Scenes/FinalMap/2_4.unity
+    guid: e1b0a4c84fd58db43b2eed915e9998e0
   - enabled: 0
     path: Assets/Scenes/DemoPuzzle.unity
     guid: b8e37ce0c6c37a449b5a7ff95aaae8c4
