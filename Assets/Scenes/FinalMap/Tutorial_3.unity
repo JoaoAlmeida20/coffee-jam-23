@@ -4244,6 +4244,7 @@ GameObject:
   - component: {fileID: 1748534797}
   - component: {fileID: 1748534798}
   - component: {fileID: 1748534799}
+  - component: {fileID: 1748534800}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -4320,6 +4321,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.48197746, y: 14.7246685}
   m_EdgeRadius: 0
+--- !u!114 &1748534800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748534796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b211f394621a5ec42bb65f7398fa2f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Plant
+    clip: {fileID: 8300000, guid: 1c3a8fef59b9db74fa47b30c758bf7b7, type: 3}
+    volume: 0.5
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &1751098588
 GameObject:
   m_ObjectHideFlags: 0

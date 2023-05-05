@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1114040237695649463}
   - component: {fileID: 2799986458248356821}
   - component: {fileID: 2875374221919911692}
+  - component: {fileID: 7274569397990364305}
   m_Layer: 0
   m_Name: Plant
   m_TagString: Untagged
@@ -96,6 +97,26 @@ MonoBehaviour:
   goDown: 0
   goRight: 0
   goLeft: 0
+--- !u!114 &7274569397990364305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857542855377477894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b211f394621a5ec42bb65f7398fa2f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Plant
+    clip: {fileID: 8300000, guid: 1c3a8fef59b9db74fa47b30c758bf7b7, type: 3}
+    volume: 0.5
+    pitch: 2
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!1001 &1304893565310833598
 PrefabInstance:
   m_ObjectHideFlags: 0
