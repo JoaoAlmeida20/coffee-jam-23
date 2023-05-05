@@ -6,7 +6,14 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public void PlayGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (!PlayerPrefs.HasKey("level"))
+            PlayerPrefs.SetInt("level", 0);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1 + PlayerPrefs.GetInt("level"));
+    }
+
+    public void ResetSave() {
+        PlayerPrefs.DeleteKey("level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame() {

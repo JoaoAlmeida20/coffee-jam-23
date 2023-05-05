@@ -49,7 +49,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.934
   m_Color: {r: 1, g: 0.9719271, b: 0.53333336, a: 1}
-  m_Intensity: 0.6
+  m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000398ce5691f4032f9dd72c2eb
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Intensity: 0
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000398ce5691f4032f9dd72c2eb
+  m_ApplyToSortingLayers: 000000001f4032f9dd72c2eb
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   maxFallSpeed: 50
   rotationSpeed: 10
   movingSprite: {fileID: 21300000, guid: 4f03b4c4ffd40fa4aa14b700364774a2, type: 3}
-  intensity: 4
+  intensity: 8
   flashLight: {fileID: 7085740772144501511}
   horizontal: 0
   vertical: 0
@@ -629,124 +629,124 @@ MonoBehaviour:
   - position: {x: -0.78031, y: -0.1173145, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
     uv: {x: 0, y: 0}
-  - position: {x: -0.992, y: -0.7266, z: 0}
+  - position: {x: -0.9959, y: -0.7198, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.9314, y: -0.8034, z: 0}
+  - position: {x: -0.9354, y: -0.7968, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.857, y: -0.8669, z: 0}
+  - position: {x: -0.8611, y: -0.8604, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.7422, y: -0.9265, z: 0}
+  - position: {x: -0.7529, y: -0.9178, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.4847, y: -1.0203, z: 0}
+  - position: {x: -0.4892, y: -1.0185, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.3899, y: -1.0446, z: 0}
+  - position: {x: -0.3948, y: -1.0443, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.2922, y: -1.05, z: 0}
+  - position: {x: -0.2972, y: -1.0512, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.1953, y: -1.0363, z: 0}
+  - position: {x: -0.2001, y: -1.039, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.103, y: -1.004, z: 0}
+  - position: {x: -0.1072, y: -1.0081, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -0.0249, y: -0.9587, z: 0}
+  - position: {x: -0.0213, y: -0.9591, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.8988, y: -0.3053, z: 0}
+  - position: {x: 0.897, y: -0.307, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.9728, y: -0.2412, z: 0}
+  - position: {x: 0.9709, y: -0.2428, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 1.0329, y: -0.164, z: 0}
+  - position: {x: 1.0308, y: -0.1654, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 1.0768, y: -0.0765, z: 0}
+  - position: {x: 1.0745, y: -0.0779, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 1.1002, y: 0.0037, z: 0}
+  - position: {x: 1.0983, y: 0.0055, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 1.1491, y: 0.2453, z: 0}
+  - position: {x: 1.1431, y: 0.2364, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 1.159, y: 0.3427, z: 0}
+  - position: {x: 1.1523, y: 0.3338, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 1.1498, y: 0.4401, z: 0}
+  - position: {x: 1.1423, y: 0.4311, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 1.1218, y: 0.5339, z: 0}
+  - position: {x: 1.1135, y: 0.5247, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 1.0785, y: 0.6166, z: 0}
+  - position: {x: 1.0777, y: 0.5943, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.8437, y: 0.9786, z: 0}
+  - position: {x: 0.85, y: 0.963, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.7827, y: 1.0551, z: 0}
+  - position: {x: 0.7907, y: 1.0409, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.7079, y: 1.1182, z: 0}
+  - position: {x: 0.7173, y: 1.1056, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.6223, y: 1.1656, z: 0}
+  - position: {x: 0.6328, y: 1.1549, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.529, y: 1.1954, z: 0}
+  - position: {x: 0.5402, y: 1.1867, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.4318, y: 1.2064, z: 0}
+  - position: {x: 0.4433, y: 1.2, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.3343, y: 1.1983, z: 0}
+  - position: {x: 0.3456, y: 1.194, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.2402, y: 1.1714, z: 0}
+  - position: {x: 0.2509, y: 1.1692, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: 0.1422, y: 1.1194, z: 0}
+  - position: {x: 0.146, y: 1.1155, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.0687, y: 0.2925, z: 0}
+  - position: {x: -1.0679, y: 0.3008, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.1437, y: 0.2297, z: 0}
+  - position: {x: -1.1435, y: 0.2385, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.205, y: 0.1534, z: 0}
+  - position: {x: -1.2054, y: 0.1628, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.2504, y: 0.0667, z: 0}
+  - position: {x: -1.2515, y: 0.0764, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.2779, y: -0.0272, z: 0}
+  - position: {x: -1.2798, y: -0.0172, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.2867, y: -0.1247, z: 0}
+  - position: {x: -1.2893, y: -0.1146, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.2763, y: -0.222, z: 0}
+  - position: {x: -1.2797, y: -0.212, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.2471, y: -0.3154, z: 0}
+  - position: {x: -1.2513, y: -0.3057, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  - position: {x: -1.2076, y: -0.3903, z: 0}
+  - position: {x: -1.2107, y: -0.3835, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
   m_Triangles: 00000500010001000500020002000400030002000500040006000c000c0006000c000d0006000d000e0006000e000f0006000700100006000f001000070010001100070011001200070012001300070013001400070014001500070008001600070015001600080016001700080017001800080018001900080019001a00080009001b0008001a001b0009001b001c0009001c001d0009001d001e0009001e001f0009000a00200009001f0020000a00200021000a00210022000a00220023000a00230024000a00240025000a00250026000a00260027000a00270028000a000b0029000a00280029000b0029002a000b002a002b000b002b002c000b002c002d000b002d002e000b002e002f000b002f0030000b00300031000c0006000b000c0031000b00
   m_LocalBounds:
-    m_Center: {x: -0.063849986, y: 0.07820004, z: 0}
-    m_Extent: {x: 1.2228501, y: 1.1282, z: 0}
+    m_Center: {x: -0.06849998, y: 0.07440001, z: 0}
+    m_Extent: {x: 1.2207999, y: 1.1256001, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.39
@@ -866,10 +866,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 4464025326511429736, guid: 92fe48c5c347eed4eb1c9a29d263dcd2, type: 3}
-  projectileSpeed: 800
+  projectileSpeed: 1200
   cooldownTime: 0.25
   tryRelinking: 0
-  intensity: 2
+  intensity: 8
   flashLight: {fileID: 5133026625673586426}
   topSearchRadius: 3
   maxHeightLink: 2
@@ -903,7 +903,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.4
+  m_Mass: 0.35
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1009,11 +1009,11 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.65
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.6683645, g: 0, b: 1, a: 1}
   m_Intensity: 0
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000398ce5691f4032f9dd72c2eb
+  m_ApplyToSortingLayers: 000000001f4032f9dd72c2eb
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
