@@ -9,6 +9,7 @@ public class Button : MonoBehaviour
     public bool isPermanent;
     public float duration;
     private AudioManager audioManager;
+    private Transform buttonPress;
 
     [Header("Final Check")]
     public bool shouldOpendoor;
@@ -37,6 +38,7 @@ public class Button : MonoBehaviour
     void Start()
     {
         audioManager = GetComponent<AudioManager>();
+        buttonPress = transform.Find("button_press");
         if(toMove != null)
             OriginalPos = toMove.transform.position;
     }
@@ -59,6 +61,7 @@ public class Button : MonoBehaviour
         yield return new WaitForSeconds(duration);
         Destroy(spawnedObj);
         busy = false;
+        buttonPress.position = buttonPress.position + transform.up * 0.12f;
     }
 
     IEnumerator despawn(float duration) {
@@ -66,6 +69,7 @@ public class Button : MonoBehaviour
         yield return new WaitForSeconds(duration);
         toDespawn.SetActive(true);
         busy = false;
+        buttonPress.position = buttonPress.position + transform.up * 0.12f;
     }
 
     IEnumerator move(float duration) {
@@ -73,6 +77,7 @@ public class Button : MonoBehaviour
         yield return new WaitForSeconds(duration);
         moving = false;
         busy = false;
+        buttonPress.position = buttonPress.position + transform.up * 0.12f;
     }
 
     IEnumerator doorTimer(float duration) {
@@ -80,13 +85,15 @@ public class Button : MonoBehaviour
         yield return new WaitForSeconds(duration);
         door.conditionFalse();
         busy = false;
+        buttonPress.position = buttonPress.position + transform.up * 0.12f;
     }
 
     void OnCollisionEnter2D(Collision2D other){
         int layer = other.gameObject.layer;
         if (layer == LayerMask.NameToLayer("Bullet") && !busy)
         {
-            busy = false;
+            busy = true;
+            buttonPress.position = buttonPress.position - transform.up * 0.12f;
             audioManager.Play("ButtonClick");
             if (shouldSpawnObj){
                 spawnedObj = Instantiate(toSpawn, spawnPos, Quaternion.identity);

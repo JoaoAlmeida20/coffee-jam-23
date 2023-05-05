@@ -8,6 +8,7 @@ public class GroundButton : MonoBehaviour
     [Header("General")]
     public bool isPermanent;
     private AudioManager audioManager;
+    private Transform platePress;
 
     [Header("Final Check")]
     public bool shouldOpendoor;
@@ -36,6 +37,7 @@ public class GroundButton : MonoBehaviour
     void Start()
     {
         audioManager = GetComponent<AudioManager>();
+        platePress = transform.Find("pressure_plate_press");
         if(toMove != null)
             OriginalPos = toMove.transform.position;
     }
@@ -57,6 +59,7 @@ public class GroundButton : MonoBehaviour
         int layer = other.gameObject.layer;
         if (layer == LayerMask.NameToLayer("Player") && triggerCount == 0)
         {
+            platePress.localPosition = platePress.localPosition + Vector3.down * 0.05f;
             audioManager.Play("ButtonClick");
             if (shouldSpawnObj){
                 spawnedObj = Instantiate(toSpawn, spawnPos, Quaternion.identity);
@@ -81,6 +84,7 @@ public class GroundButton : MonoBehaviour
             int layer = other.gameObject.layer;
             if (layer == LayerMask.NameToLayer("Player"))
             {
+                platePress.localPosition = platePress.localPosition - Vector3.down * 0.05f;
                 if (shouldSpawnObj){
                     Destroy(spawnedObj);
                 }

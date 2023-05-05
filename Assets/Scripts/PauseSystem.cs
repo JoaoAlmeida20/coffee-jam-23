@@ -39,4 +39,10 @@ public class PauseSystem : MonoBehaviour
         isPaused = false;
         SceneManager.LoadScene("Menu");
     }
+
+    public void Restart() {
+        Scene scene = SceneManager.GetActiveScene();
+        Resume();
+        SceneManager.LoadScene(scene.name);
+    }
 }

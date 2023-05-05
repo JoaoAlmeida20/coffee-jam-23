@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -10,7 +11,7 @@ public class PlantGrowthController : MonoBehaviour
     [Header("Growth Properties")]
     public float growthRate = 0.5f;
     public float maxGrowthNumber = 5f;
-    public float minGrowthNumber = 0f;
+    public float minGrowthNumber = 0.2f;
     public bool goUp = false;
     public bool goDown = false;
     public bool goRight = false;
@@ -18,9 +19,12 @@ public class PlantGrowthController : MonoBehaviour
     
     private Vector3 maxGrowthVector;
     private Vector3 minGrowthVector;
+
+    private AudioManager audioManager;
     
     private void Start()
     {
+        audioManager = GetComponent<AudioManager>();
         if (goUp) //grow up
         {
             maxGrowthVector = new Vector3(transform.position.x, transform.position.y + maxGrowthNumber, transform.position.z);
@@ -47,6 +51,9 @@ public class PlantGrowthController : MonoBehaviour
     {
         if (isPositiveLit) transform.position = Vector3.MoveTowards(transform.position, maxGrowthVector, growthRate * Time.deltaTime);
         if (isNegativeLit) transform.position = Vector3.MoveTowards(transform.position, minGrowthVector, growthRate * Time.deltaTime);
+        
+        if(maxGrowthVector == transform.position) audioManager.Stop("Plant");
+        if(minGrowthVector == transform.position) audioManager.Stop("Plant");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -54,6 +61,7 @@ public class PlantGrowthController : MonoBehaviour
         Light2D light2D = other.GetComponent<Light2D>();
         if (light2D != null)
         {
+            audioManager.Play("Plant");
             if (other.CompareTag("Positive Light")) isPositiveLit = true;
             if (other.CompareTag("Negative Light")) isNegativeLit = true;
         }
@@ -64,6 +72,7 @@ public class PlantGrowthController : MonoBehaviour
         Light2D light2D = other.GetComponent<Light2D>();
         if (light2D != null)
         {
+            audioManager.Stop("Plant");
             if (other.CompareTag("Positive Light")) isPositiveLit = false;
             if (other.CompareTag("Negative Light")) isNegativeLit = false;
         }

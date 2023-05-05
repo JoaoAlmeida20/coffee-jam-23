@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 175082478}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -7.67, y: 10.53, z: 0}
+  m_LocalPosition: {x: -7.83, y: 10.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3517,6 +3517,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5858401701324167145, guid: 7e2e81e33fa0ad440bade47da43e92da, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858401701324167145, guid: 7e2e81e33fa0ad440bade47da43e92da, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 5858401701324167145, guid: 7e2e81e33fa0ad440bade47da43e92da, type: 3}
+      propertyPath: m_Color.r
+      value: 0.14901961
+      objectReference: {fileID: 0}
     - target: {fileID: 6373894057084901075, guid: 7e2e81e33fa0ad440bade47da43e92da, type: 3}
       propertyPath: speed
       value: 0.8
@@ -3846,7 +3858,7 @@ PrefabInstance:
       objectReference: {fileID: 1223602057}
     - target: {fileID: 8897817394948432335, guid: d08d55b992044dd4db0e4fd53fca7822, type: 3}
       propertyPath: duration
-      value: 0.75
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8897817394948432335, guid: d08d55b992044dd4db0e4fd53fca7822, type: 3}
       propertyPath: movePos.x
@@ -3940,6 +3952,18 @@ PrefabInstance:
     - target: {fileID: 2199295304344761379, guid: d08d55b992044dd4db0e4fd53fca7822, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920817265953170373, guid: d08d55b992044dd4db0e4fd53fca7822, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920817265953170373, guid: d08d55b992044dd4db0e4fd53fca7822, type: 3}
+      propertyPath: m_Color.g
+      value: 0.21568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920817265953170373, guid: d08d55b992044dd4db0e4fd53fca7822, type: 3}
+      propertyPath: m_Color.r
+      value: 0.99215686
       objectReference: {fileID: 0}
     - target: {fileID: 8897817394948432335, guid: d08d55b992044dd4db0e4fd53fca7822, type: 3}
       propertyPath: door
