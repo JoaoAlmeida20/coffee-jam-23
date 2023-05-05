@@ -44,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalMap/2_4.unity
     guid: e1b0a4c84fd58db43b2eed915e9998e0
+  - enabled: 1
+    path: Assets/Scenes/FinalMap/2_5.unity
+    guid: 7ddcee103e09b8b4d8a111562d6f6f64
   - enabled: 0
     path: Assets/Scenes/DemoPuzzle.unity
     guid: b8e37ce0c6c37a449b5a7ff95aaae8c4
