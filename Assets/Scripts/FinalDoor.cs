@@ -75,6 +75,16 @@ public class FinalDoor : MonoBehaviour
         }
     }
 
+    void OnTriggerStay2D(Collider2D other) {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Player") && isOpen)
+        {
+            if (other.gameObject.GetComponent<FixedJoint2D>() != null && other.gameObject.GetComponent<FixedJoint2D>().enabled)
+            {
+                StartCoroutine(FinishLevel());
+            }
+        }
+    }
+
     IEnumerator FinishLevel() {
         GameObject.Find("LoadingScreen").GetComponent<LoadingScreen>().close = true;
         PlayerPrefs.SetInt("level", PlayerPrefs.GetInt("level") + 1);

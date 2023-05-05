@@ -122,12 +122,11 @@ public class PlayerBottomController : MonoBehaviour
         }
         
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
-            audioManager.Play("Pulling");
-            isPulling = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift)) {
-            audioManager.Play("NotPulling");
-            isPulling = false;
+            if (isPulling)        
+                audioManager.Play("Pulling");
+            else
+                audioManager.Play("NotPulling");
+            isPulling = !isPulling;
         }
     }
 
@@ -202,7 +201,7 @@ public class PlayerBottomController : MonoBehaviour
                 if (distanceToPlayer <= pullDistance)
                 {
                     Vector3 directionToPlayer = (transform.position - obj.transform.position).normalized;
-                    float pullForce = (pullDistance - distanceToPlayer) / pullDistance * pullStrength;
+                    float pullForce = Mathf.Max(1.3f, (pullDistance - distanceToPlayer)) / pullDistance * pullStrength;
                     obj.GetComponent<Rigidbody2D>().AddForce(directionToPlayer * pullForce);
                 }
             }
